@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body class="body__popup">
+    <div class="popup">
+      <div class="header">
+        <a href="https://github.com/ktr17/GetKindleMemos/blob/main/Bookmarklet.js">
+          <div class="header__logo">Kindle Memo for Markdown</div>
+        </a>
+        <div class="spacer"></div>
+        <!-- <div class="header__setting">設定</div> -->
+      </div>
+      <div class="tabs">
+        <div class="tab tab--active">Kindle</div>
+        <div class="spacer"></div>
+        <div class="button__link">
+          <span id="exportBtn">Export</span>
+        </div>
+      </div>
+      <div class="memo__area">
+        <div class="label__heading">現在の書籍タイトル</div>
+        <div class="copy__class">
+          <textarea class="book__title" id="bookTitle"></textarea>
+          <div class="copy__button__space">
+            <div class="spacer"></div>
+            <button class="clipboard__copy__btn" id="bookTitleCopyBtn">Copy</button>
+          </div>
+        </div>
+        <div class="label__heading">メモ</div>
+        <div class="memo__text">
+          <textarea name="" class="FlexTextarea__textarea" id="bookMemo"></textarea>
+          <div class="copy__button__space">
+            <div class="spacer"></div>
+            <button class="clipboard__copy__btn" id="bookMemoCopyBtn">Copy</button>
+          </div>
+        </div>
+      </div>
+      <script src="js/popup.js"></script>
+    </div>
+  </body>
+</html>
+

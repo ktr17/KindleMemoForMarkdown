@@ -1,0 +1,152 @@
+@charset "UTF-8";
+:root {
+  --color-background: white;
+  --color-background-dark: #121212;
+  --color-background-dark-lighten: #2b2b2b;
+  --color-button-background-default: #4608ad1a;
+  --color-button-background-hover: rgba(70, 8, 173, 0.2);
+  --color-primary: #4608ad;
+  --color-primary-lighten: #f4f1fa;
+  --color-secondary: #fafafa;
+  --color-secondary-dark: #1e1e1e;
+  --color-border: #ebebeb;
+  --color-border-dark: #2b2b2b;
+  --color-text: #4a4a4a;
+  --color-text-lighten: #7a7a7a;
+  --color-text-dark: var(--color-background);
+  --color-text-dark-lighten: #979797;
+  --color-anchor-dark: var(--color-text-dark);
+  --color-success: #50b154;
+  --color-error: #ff5252;
+}
+
+* {
+  box-sizing: border-box;
+  scrollbar-width: none;
+}
+
+body {
+  background: var(--color-primary);
+  color: var(--color-text);
+  direction: ltr;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  margin: 0;
+  overflow: hidden;
+}
+
+.body__popup {
+  min-width: 24rem;
+  max-width: 34rem;
+}
+
+.header {
+  align-items: center;
+  background: var(--color-primary);
+  display: flex;
+  height: 4.5rem;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  color: white;
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.popup {
+  background: var(--color-background);
+  max-height: 34rem;
+  overflow-y: auto;
+}
+
+.header__logo {
+  color: white;
+}
+
+.memo__text {
+  min-width: 24rem;
+  max-width: 34rem;
+}
+
+textarea {
+  resize: none;
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid #b6c3c6;
+  border-radius: 0.2rem;
+}
+
+.FlexTextarea__textarea {
+  height: 10rem;
+}
+
+.label__heading {
+  font-weight: bold;
+  line-height: 2rem;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.memo__area {
+  margin: 0 1rem 0 1rem;
+}
+
+.tabs {
+  display: flex;
+  color: var(--color-primary);
+  align-items: center;
+  border-bottom: 1px solid;
+  border-color: var(--color-border);
+}
+
+.tab {
+  color: var(--color-text-lighten);
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  padding: 1rem 1.5rem 0.8rem 1.5rem;
+  white-space: nowrap;
+  position: relative;
+}
+.tab.tab--active {
+  background: var(--color-primary-lighten);
+  border-bottom: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  pointer-events: none;
+}
+
+.clipboard__copy__btn {
+  font-size: 0.8rem;
+  color: white;
+  background-color: white;
+  border-radius: 10px;
+  padding: 0.4rem 1rem 0.4rem 1rem;
+  border: solid var(--color-primary);
+  background-color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+.clipboard__copy__btn:hover {
+  cursor: pointer;
+  background-color: var(--color-secondary);
+  color: var(--color-secondary-dark);
+}
+
+.copy__button__space {
+  display: flex;
+}
+
+.button__link {
+  border-radius: 4px;
+  padding: 0.2rem 1rem 0.2rem 1rem;
+  margin-top: 0.2rem;
+  margin-right: 0.2rem;
+  background-color: var(--color-button-background-default);
+  color: var(--color-primary);
+}
+.button__link:hover {
+  background-color: var(--color-button-background-hover);
+  cursor: pointer;
+}
+
+/* 以下、削除予定のコード *//*# sourceMappingURL=style.css.map */
