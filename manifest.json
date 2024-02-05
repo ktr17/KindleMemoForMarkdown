@@ -24,7 +24,5 @@
       ]
     }
   ],
-  "permissions": [
-    "tabs"
-  ]
+  "permissions": []
 }
