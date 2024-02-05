@@ -1,10 +1,11 @@
 :root {
   --color-background: white;
+  --color-white: white;
   --color-background-dark: #121212;
-  --color-background-dark-lighten: #2b2b2b;
-  --color-button-background-default: #4608ad1a;
-  --color-button-background-hover: rgba(70, 8, 173, 0.2);
-  --color-primary: #4608ad;
+  --color-background-dark-lighten: #2a2a2a;
+  --color-button-background-default: rgb(37, 59, 94);
+  --color-button-background-hover: rgba(25, 54, 101, 0.2);
+  --color-primary: rgb(25, 54, 101);
   --color-primary-lighten: #f4f1fa;
   --color-secondary: #fafafa;
   --color-secondary-dark: #1e1e1e;
@@ -120,7 +121,8 @@ textarea {
 	color: white;
 	background-color: white;
 	border-radius: 10px;
-	padding: 0.4rem 1rem 0.4rem 1rem;
+  width: 4rem;
+  padding: 0.4rem 0rem 0.4rem 0rem;
 	border: solid var(--color-primary);
 	background-color: var(--color-primary);
   margin-bottom: 0.5rem;
@@ -140,10 +142,11 @@ textarea {
 	margin-top: 0.2rem;
 	margin-right: 0.2rem;
   background-color: var(--color-button-background-default);
-  color: var(--color-primary);
+  color: var(--color-white);
 
   &:hover {
 	background-color: var(--color-button-background-hover);
+  color: var(--color-primary);
 	cursor: pointer;
   }
 }

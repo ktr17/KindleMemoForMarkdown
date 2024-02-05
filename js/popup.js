@@ -16,7 +16,7 @@ bookTitleCopyBtn.addEventListener("click", () => {
 	if (eBookTitle != null) {
 		bookTitle = eBookTitle.value;
 	}
-	copyClipboad(bookTitle);
+	copyClipboad(bookTitle, bookTitleCopyBtn);
 }, false);
 // 書籍のメモをコピーするイベント登録
 let bookMemoCopyBtn = document.getElementById("bookMemoCopyBtn");
@@ -26,26 +26,29 @@ bookMemoCopyBtn.addEventListener("click", () => {
 	if (eBookMemo != null) {
 		bookMemo = eBookMemo.value;
 	}
-	copyClipboad(bookMemo);
+	copyClipboad(bookMemo, bookMemoCopyBtn);
 })
-
 
 /**
  * クリップボードへのコピー処理
  * @param {copyText} コピー対象の文字列
  */
-function copyClipboad(copyText) {
+function copyClipboad(copyText, eDom) {
 	// クリップボードにコピーできるかをチェック
 	if(!navigator.clipboard) {
-		alert("クリップボードにコピーできませんでした。");
+		alert("コピーできません。");
 	}
+
 	// コピー実行
 	let promise = navigator.clipboard.writeText(copyText);
 	promise.then((response) => {
-		alert("コピーできました。");
+		eDom.innerHTML = "Copied!"
+		// 1秒後にボタンの文字列を「Copy」に変更する。
+		setTimeout(() => (eDom.innerHTML = 'Copy'), 1000);
 	}).catch((error) => {
-		alert("コピーできませんでした。");
+		alert("コピーに失敗しました。");
 	});
+
 }
 
 /**
@@ -66,7 +69,7 @@ function callback(callback_data) {
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 	// 拡張機能をクリック時に取得したbookTitleをテキストエリア(ID: bookTitle)に表示する
-	if (request.name === "content:popup:bookTitle") {
+	if (request.name === "content:popup:bookTitleAndMemo") {
 		let eTitle = document.getElementById("bookTitle");
 		if (eTitle != null) {
 			eTitle.value = request.message.Title;
