@@ -60,13 +60,6 @@ function initialMessage(tabs) {
 
 }
 
-/**
- * initialMessage()でのコールバック関数
- */
-function callback(callback_data) {
-	// コールバック関数の処理（popupからの値をlocalstrageに保存するなど）
-}
-
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 	// 拡張機能をクリック時に取得したbookTitleをテキストエリア(ID: bookTitle)に表示する
 	if (request.name === "content:popup:bookTitleAndMemo") {

@@ -31,16 +31,18 @@ function getBookMemo() {
 	for (var i = 0; i < eBookMemos.length; i++){
 		bookMemo = eBookMemos[i].getElementsByClassName("a-size-base-plus a-color-base");
 		memoPosition = eBookMemos[i].getElementsByClassName("a-size-small a-color-secondary kp-notebook-selectable kp-notebook-metadata");
+		let firstLine = ""
 		if (bookMemo.length){
-			console.log(bookMemo);
 			// メモ箇所を取得
 			if (bookMemo.note.innerText != "") {
-				let newstr = bookMemo.note.innerText.replace('■', '## ');
-				retMemoText += newstr + "\n\n";
+				firstLine = bookMemo.note.innerText.slice(0, bookMemo.note.innerText.indexOf('\n'))
+				// 1行目に見出し2を設定する
+				firstLine = "## " + firstLine + "\n";
+				retMemoText += firstLine + bookMemo.note.innerText + "\n\n";
 			}
 			// ハイライト箇所を取得
 			if (bookMemo.highlight.innerText != "") {
-				retMemoText += "■ハイライト\n> " + bookMemo.highlight.innerText + "\n" + memoPosition[1].innerText + "\n\n";
+				retMemoText += "> " + bookMemo.highlight.innerText + "\n" + memoPosition[1].innerText + "\n\n";
 			}
 		}
 	}
