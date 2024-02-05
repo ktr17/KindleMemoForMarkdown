@@ -35,14 +35,12 @@ function getBookMemo() {
 		if (bookMemo.length){
 			// メモ箇所を取得
 			if (bookMemo.note.innerText != "") {
-				firstLine = bookMemo.note.innerText.slice(0, bookMemo.note.innerText.indexOf('\n'))
 				// 1行目に見出し2を設定する
-				firstLine = "## " + firstLine + "\n";
-				retMemoText += firstLine + bookMemo.note.innerText + "\n\n";
+  			retMemoText += "## " + bookMemo.note.innerText + "\n\n";
 			}
 			// ハイライト箇所を取得
 			if (bookMemo.highlight.innerText != "") {
-				retMemoText += "> " + bookMemo.highlight.innerText + "\n" + memoPosition[1].innerText + "\n\n";
+				retMemoText += "> " + bookMemo.highlight.innerText + "\n\n" + memoPosition[1].innerText + "\n\n";
 			}
 		}
 	}
