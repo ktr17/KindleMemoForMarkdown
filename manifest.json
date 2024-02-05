@@ -1,5 +1,5 @@
 {
-  "name": "kindle Memo",
+  "name": "Kindle Memo for Markdown",
   "description": "KindleのWebページ「メモとハイライト」から、ユーザが記入したメモとハイライトの内容をマークダウン形式で抽出することができます。",
   "version": "1.0.0",
   "manifest_version": 3,
