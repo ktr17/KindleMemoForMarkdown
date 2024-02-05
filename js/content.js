@@ -23,8 +23,6 @@ function getBookTitle() {
  * 書籍のメモを取得する
  */
 function getBookMemo() {
-	let queryBookImg = "#annotation-scroller > div > div.a-row.a-spacing-base > div.a-column.a-span1.kp-notebook-bookcover-container > a > span > img";
-
 	// メモの内容を取得
 	let eBookMemos = document.getElementById("kp-notebook-annotations").children;
 
@@ -34,13 +32,20 @@ function getBookMemo() {
 		bookMemo = eBookMemos[i].getElementsByClassName("a-size-base-plus a-color-base");
 		memoPosition = eBookMemos[i].getElementsByClassName("a-size-small a-color-secondary kp-notebook-selectable kp-notebook-metadata");
 		if (bookMemo.length){
-			if (bookMemo.note.innerText != ""){
+			console.log(bookMemo);
+			// メモ箇所を取得
+			if (bookMemo.note.innerText != "") {
 				let newstr = bookMemo.note.innerText.replace('■', '## ');
-				retMemoText += newstr + "\n" + memoPosition[1].innerText + "\n\n";
+				retMemoText += newstr + "\n\n";
+			}
+			// ハイライト箇所を取得
+			if (bookMemo.highlight.innerText != "") {
+				retMemoText += "■ハイライト\n> " + bookMemo.highlight.innerText + "\n" + memoPosition[1].innerText + "\n\n";
 			}
 		}
 	}
 	return retMemoText;
+
 }
 
 /**
