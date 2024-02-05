@@ -29,6 +29,53 @@ bookMemoCopyBtn.addEventListener("click", () => {
 	copyClipboad(bookMemo, bookMemoCopyBtn);
 })
 
+
+
+// Content.jsから受け取った書籍タイトルと書籍メモをテキストエリアに表示する処理を登録
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+	// 拡張機能をクリック時に取得したbookTitleをテキストエリア(ID: bookTitle)に表示する
+	if (request.name === "content:popup:bookTitleAndMemo") {
+		// 書籍タイトルが空欄のときは正常に取得できなかったため、エラー処理を行う
+		if (request.message.Title == "") {
+			alert("エラー");
+			let eMemoArea = document.getElementById("memoArea");
+			eMemoArea.style.display = 'none';
+			return;
+		}
+		let eTitle = document.getElementById("bookTitle");
+		if (eTitle != null) {
+			eTitle.value = request.message.Title;
+		}
+		let eMemo = document.getElementById("bookMemo");
+		if (eMemo != null) {
+			eMemo.value = request.message.Memo;
+		}
+	}
+});
+
+/**
+ * 現在開いているタブにデータを送信する
+ */
+function initialMessage(tabs) {
+	// 現在開いているタブにメッセージを送る(send_data, callbackは省略可能)
+	let promise = chrome.tabs.sendMessage(tabs[0].id, { name: "popup:content:initial"});
+	promise.then((response) => {
+		// 成功
+		let eMemoArea = document.getElementById("memoArea");
+		eMemoArea.style.display = 'block';
+		let eErrorMessage = document.getElementById("errorMessage");
+		eErrorMessage.style.display = 'none';
+
+	})
+	.catch((error) => {
+		// 失敗
+		let eMemoArea = document.getElementById("memoArea");
+		eMemoArea.style.display = 'none';
+		let eErrorMessage = document.getElementById("errorMessage");
+		eErrorMessage.style.display = 'block';
+	});
+}
+
 /**
  * クリップボードへのコピー処理
  * @param {copyText} コピー対象の文字列
@@ -48,38 +95,4 @@ function copyClipboad(copyText, eDom) {
 	}).catch((error) => {
 		alert("コピーに失敗しました。");
 	});
-
 }
-
-/**
- * 現在開いているタブにデータを送信する
- */
-function initialMessage(tabs) {
-	// 現在開いているタブにメッセージを送る(send_data, callbackは省略可能)
-	chrome.tabs.sendMessage(tabs[0].id, { message: "test", name: "popup:initial"});
-
-}
-
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-	// 拡張機能をクリック時に取得したbookTitleをテキストエリア(ID: bookTitle)に表示する
-	if (request.name === "content:popup:bookTitleAndMemo") {
-		let eTitle = document.getElementById("bookTitle");
-		if (eTitle != null) {
-			eTitle.value = request.message.Title;
-		}
-		let eMemo = document.getElementById("bookMemo");
-		if (eMemo != null) {
-			eMemo.value = request.message.Memo;
-		}
-	}
-	// 取得したメモをmemoエリアに表示
-	if (request.name === "download:memo") {
-	}
-	if(request.name === "update") {
-		let eTitle = document.getElementById("bookTitle");
-		if (eTitle != null) {
-			eTitle.innerText = request.message;
-		}
-	}
-});
-
