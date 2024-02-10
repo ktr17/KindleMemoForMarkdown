@@ -13,5 +13,4 @@
 
 書籍タイトルとメモの内容がMarkdown形式でコピーできるようになるため、Markdownエディタへコピペする
 
-![](https://github.com/ktr17/KindleMemoForMarkdown/assets/9158853/4bc719dc-e44a-4075-93ac-7a8a3b7f837d)
-
+![](https://lh3.googleusercontent.com/ylVuAJ2LXNFSY1nP3dMkSW526JYZapGBJGVonRsVS_O0b6j8y6y1m8xo3ES1uZRcSaeHyjQytYA0Kd4vHIqct7pkq8s=s1600-w1600-h1000)
