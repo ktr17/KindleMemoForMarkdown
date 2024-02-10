@@ -18,6 +18,18 @@ bookTitleCopyBtn.addEventListener("click", () => {
 	}
 	copyClipboad(bookTitle, bookTitleCopyBtn);
 }, false);
+
+// 書籍の表紙リンクをコピーするイベント登録
+let bookImgLinkCopyBtn = document.getElementById("bookImgLinkCopyBtn");
+bookImgLinkCopyBtn.addEventListener("click", () => {
+	let eBookImgLink = document.getElementById("bookImgLink");
+	let bookImgLink = "";
+	if (eBookImgLink != null) {
+		bookImgLink = eBookImgLink.value;
+	}
+	copyClipboad(bookImgLink, bookImgLinkCopyBtn);
+});
+
 // 書籍のメモをコピーするイベント登録
 let bookMemoCopyBtn = document.getElementById("bookMemoCopyBtn");
 bookMemoCopyBtn.addEventListener("click", () => {
@@ -27,8 +39,7 @@ bookMemoCopyBtn.addEventListener("click", () => {
 		bookMemo = eBookMemo.value;
 	}
 	copyClipboad(bookMemo, bookMemoCopyBtn);
-})
-
+});
 
 
 // Content.jsから受け取った書籍タイトルと書籍メモをテキストエリアに表示する処理を登録
@@ -42,10 +53,17 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 			eMemoArea.style.display = 'none';
 			return;
 		}
+		// 書籍タイトルの表示
 		let eTitle = document.getElementById("bookTitle");
 		if (eTitle != null) {
 			eTitle.value = request.message.Title;
 		}
+		// 表紙リンクの表示
+		let eBookImgLink = document.getElementById("bookImgLink");
+		if (eBookImgLink != null) {
+			eBookImgLink.value = request.message.BookImgLink;
+		}
+		// メモの表示
 		let eMemo = document.getElementById("bookMemo");
 		if (eMemo != null) {
 			eMemo.value = request.message.Memo;

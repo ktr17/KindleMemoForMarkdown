@@ -49,21 +49,34 @@ function getBookMemo() {
 }
 
 /**
+ * 書籍の表紙イメージのリンクを取得するf
+ */
+function getBookImgLink() {
+	// 書籍の表紙イメージ
+	let eBookImgLink = document.querySelector("#annotation-scroller > div > div.a-row.a-spacing-base > div.a-column.a-span1.kp-notebook-bookcover-container > a > span > img");
+	let retBookImgLink = "";
+	if (eBookImgLink != null) {
+		retBookImgLink = "![](" + eBookImgLink.src + ")";
+	}
+	return retBookImgLink;
+}
+/**
  * メッセージに対する処理を登録
  */
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	// 初期化処理(拡張機能を実行時)
 	if (request.name === "popup:content:initial") {
-		console.log("content.js : " + request.name);
 		let bookTitle = getBookTitle();
 		let bookMemo = getBookMemo();
-		let promise = chrome.runtime.sendMessage({ name: "content:popup:bookTitleAndMemo", message: {Title: bookTitle, Memo: bookMemo}});
+		let bookImgLink = getBookImgLink();
+
+		let promise = chrome.runtime.sendMessage({ name: "content:popup:bookTitleAndMemo", message: {Title: bookTitle, Memo: bookMemo, BookImgLink: bookImgLink}});
 		promise.then((response) => {
 			// 成功
 		})
 		.catch((error) => {
 			// 失敗
-			console.log(error);
+			console.error(error);
 		});
 	}
 });
