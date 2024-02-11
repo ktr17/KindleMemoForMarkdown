@@ -56,7 +56,7 @@ function getBookImgLink() {
 	let eBookImgLink = document.querySelector("#annotation-scroller > div > div.a-row.a-spacing-base > div.a-column.a-span1.kp-notebook-bookcover-container > a > span > img");
 	let retBookImgLink = "";
 	if (eBookImgLink != null) {
-		retBookImgLink = "![](" + eBookImgLink.src + ")";
+		retBookImgLink = eBookImgLink.src;
 	}
 	return retBookImgLink;
 }

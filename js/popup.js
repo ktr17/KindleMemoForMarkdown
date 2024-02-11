@@ -56,17 +56,29 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 		// 書籍タイトルの表示
 		let eTitle = document.getElementById("bookTitle");
 		if (eTitle != null) {
-			eTitle.value = request.message.Title;
+			if (request.message.Title == "") {
+				eTitle.value = "取得できませんでした。";
+			} else {
+				eTitle.value = request.message.Title;
+			}
 		}
 		// 表紙リンクの表示
 		let eBookImgLink = document.getElementById("bookImgLink");
 		if (eBookImgLink != null) {
-			eBookImgLink.value = request.message.BookImgLink;
+			if (request.message.BookImgLink == "") {
+				eBookImgLink.value = "取得できませんでした。";
+			} else {
+				eBookImgLink.value = request.message.BookImgLink;
+			}
 		}
 		// メモの表示
 		let eMemo = document.getElementById("bookMemo");
 		if (eMemo != null) {
-			eMemo.value = request.message.Memo;
+			if (request.message.Memo == "") {
+				eMemo.value = "取得できませんでした。";
+			} else {
+				eMemo.value = request.message.Memo;
+			}
 		}
 	}
 });
