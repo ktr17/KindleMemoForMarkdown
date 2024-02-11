@@ -29,10 +29,10 @@ body {
   background: var(--color-primary);
   color: var(--color-text);
   direction: ltr;
-	font-family: Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: .9rem;
   line-height: 1.5rem;
-	margin: 0;
+  margin: 0;
   overflow: hidden;
 }
 
@@ -48,7 +48,7 @@ body {
   height: 4.5rem;
   justify-content: space-between;
   padding: 0 1.5rem;
-	color: white;
+  color: white;
 }
 
 .spacer {
@@ -61,19 +61,19 @@ body {
   overflow-y: auto;
 }
 .header__logo {
-	color: white;
+  color: white;
 }
 .memo__text {
-	min-width: 24rem;
-	max-width: 34rem;;
+  min-width: 24rem;
+  max-width: 34rem;;
 }
 
 textarea {
-	resize: none;
-	width: 100%;
-	background-color: transparent;
-	border: 1px solid #b6c3c6;
-	border-radius: 0.2rem;
+  resize: none;
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid #b6c3c6;
+  border-radius: 0.2rem;
 }
 
 .FlexTextarea__textarea {
@@ -82,18 +82,18 @@ textarea {
 
 
 .label__heading {
-	font-weight: bold;
-	line-height: 2rem;
-	color: var(--color-text);
-	text-decoration: none;
+  font-weight: bold;
+  line-height: 2rem;
+  color: var(--color-text);
+  text-decoration: none;
 }
 
 .memo__area {
-	margin: 0 1rem 0 1rem;
+  margin: 0 1rem 0 1rem;
 }
 
 .tabs {
-	display: flex;
+  display: flex;
   color: var(--color-primary);
   align-items: center;
   border-bottom: 1px solid;
@@ -118,14 +118,14 @@ textarea {
 }
 
 .clipboard__copy__btn {
-	font-size: 0.8rem;
-	color: white;
-	background-color: white;
-	border-radius: 10px;
+  font-size: 0.8rem;
+  color: white;
+  background-color: white;
+  border-radius: 10px;
   width: 4rem;
   padding: 0.4rem 0rem 0.4rem 0rem;
-	border: solid var(--color-primary);
-	background-color: var(--color-primary);
+  border: solid var(--color-primary);
+  background-color: var(--color-primary);
   margin-bottom: 0.5rem;
   &:hover {
     cursor: pointer;
@@ -134,21 +134,21 @@ textarea {
   }
 }
 .copy__button__space {
-	display: flex;
+  display: flex;
 }
 
 .button__link {
-	border-radius: 4px;
-	padding: 0.2rem 1rem 0.2rem 1rem;
-	margin-top: 0.2rem;
-	margin-right: 0.2rem;
+  border-radius: 4px;
+  padding: 0.2rem 1rem 0.2rem 1rem;
+  margin-top: 0.2rem;
+  margin-right: 0.2rem;
   background-color: var(--color-button-background-default);
   color: var(--color-white);
 
   &:hover {
-	background-color: var(--color-button-background-hover);
+  background-color: var(--color-button-background-hover);
   color: var(--color-primary);
-	cursor: pointer;
+  cursor: pointer;
   }
 }
 
@@ -158,5 +158,5 @@ textarea {
 // メモを取得できない場合のメッセージ
 #errorMessage {
   display: none;
-	margin: 0 1rem 1rem 1rem;
+  margin: 0 1rem 1rem 1rem;
 }
