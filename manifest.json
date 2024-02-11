@@ -1,7 +1,7 @@
 {
   "name": "Kindle Memo for Markdown",
-  "description": "KindleのWebページ「メモとハイライト」から、ユーザが記入したメモとハイライトの内容をマークダウン形式で抽出することができます。",
-  "version": "1.0.0",
+  "description": "「Kindle: メモとハイライト」のWebページから、読書中に記入したメモやハイライトの内容をMarkdown形式で一括でコピーすることができます。",
+  "version": "1.1.0",
   "manifest_version": 3,
   "action": {
     "default_popup": "popup.html"
