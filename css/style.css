@@ -57,7 +57,7 @@ body {
 
 .popup {
   background: var(--color-background);
-  max-height: 34rem;
+  max-height: 36rem;
   overflow-y: auto;
 }
 
@@ -79,7 +79,7 @@ textarea {
 }
 
 .FlexTextarea__textarea {
-  height: 10rem;
+  height: 8rem;
 }
 
 .label__heading {
