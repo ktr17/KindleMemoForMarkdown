@@ -1,3 +1,6 @@
+import { Config } from './config.js'
+import { Logger } from './logger.js'
+
 /**
  * 起動処理
  * 拡張機能のアイコンがクリックされたときに実行される処理

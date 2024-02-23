@@ -29,19 +29,23 @@ function getBookMemo() {
   // メモを取得して、マークダウンに変換する処理
   let retMemoText = "";
   for (var i = 0; i < eBookMemos.length; i++){
-    bookMemo = eBookMemos[i].getElementsByClassName("a-size-base-plus a-color-base");
-    memoPosition = eBookMemos[i].getElementsByClassName("a-size-small a-color-secondary kp-notebook-selectable kp-notebook-metadata");
-    let firstLine = ""
-    if (bookMemo.length){
-      // メモ箇所を取得
-      if (bookMemo.note.innerText != "") {
-        // 1行目に見出し2を設定する
-        retMemoText += "## " + bookMemo.note.innerText + "\n\n";
+    try{
+      bookMemo = eBookMemos[i].getElementsByClassName("a-size-base-plus a-color-base");
+      memoPosition = eBookMemos[i].getElementsByClassName("a-size-small a-color-secondary kp-notebook-selectable kp-notebook-metadata");
+      let firstLine = "";
+      if (bookMemo.length){
+        // メモ箇所を取得
+        if (bookMemo.note.innerText != "") {
+          // 1行目に見出し2を設定する
+          retMemoText += "## " + bookMemo.note.innerText + "\n\n";
+        }
+        // ハイライト箇所を取得
+        if (bookMemo.highlight.innerText != "") {
+          retMemoText += "> " + bookMemo.highlight.innerText + "\n\n" + memoPosition[1].innerText + "\n\n";
+        }
       }
-      // ハイライト箇所を取得
-      if (bookMemo.highlight.innerText != "") {
-        retMemoText += "> " + bookMemo.highlight.innerText + "\n\n" + memoPosition[1].innerText + "\n\n";
-      }
+    } catch {
+      retMemoText += "申し訳ありませんが、このメモは「メモとハイライト」で表示されていません。" + "\n\n" + memoPosition[1].innerText + "\n\n";
     }
   }
   return retMemoText;
@@ -66,18 +70,21 @@ function getBookImgLink() {
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   // 初期化処理(拡張機能を実行時)
   if (request.name === "popup:content:initial") {
-    let bookTitle = getBookTitle();
-    let bookMemo = getBookMemo();
-    let bookImgLink = getBookImgLink();
-
-    let promise = chrome.runtime.sendMessage({ name: "content:popup:bookTitleAndMemo", message: {Title: bookTitle, Memo: bookMemo, BookImgLink: bookImgLink}});
-    promise.then((response) => {
-      // 成功
-    })
-    .catch((error) => {
-      // 失敗
-      console.error(error);
-    });
+    try {
+      let bookTitle = getBookTitle();
+      let bookMemo = getBookMemo();
+      let bookImgLink = getBookImgLink();
+      let promise = chrome.runtime.sendMessage({ name: "content:popup:bookTitleAndMemo", message: {Title: bookTitle, Memo: bookMemo, BookImgLink: bookImgLink}});
+      promise.then((response) => {
+        // 成功
+      })
+      .catch((error) => {
+        // 失敗
+        console.error(error);
+      });
+    } catch {
+      console.log("エラー");
+    }
   }
 });
 
