@@ -35,12 +35,14 @@ function getBookMemo() {
       let firstLine = "";
       if (bookMemo.length){
         // メモ箇所を取得
-        if (bookMemo.note.innerText != "") {
+        // ハイライトのみでメモがない場合でもメモ(note)のhtmlは存在するため、本処理でも落ちないが、念のためnullチェックを行う
+        if ((bookMemo.note != null) && (bookMemo.note.innerText != "")) {
           // 1行目に見出し2を設定する
           retMemoText += "## " + bookMemo.note.innerText + "\n\n";
         }
         // ハイライト箇所を取得
-        if (bookMemo.highlight.innerText != "") {
+        // ハイライトなしでメモのみの場合、ハイライトのhtmlが存在しないため、nullチェックを行う
+        if ((bookMemo.highlight != null) && (bookMemo.highlight.innerText != "")) {
           retMemoText += "> " + bookMemo.highlight.innerText + "\n\n" + memoPosition[1].innerText + "\n\n";
         }
       }
