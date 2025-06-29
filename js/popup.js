@@ -22,6 +22,17 @@ bookTitleCopyBtn.addEventListener("click", () => {
   copyClipboad(bookTitle, bookTitleCopyBtn);
 }, false);
 
+// 著者名のコピーイベントを登録
+let authorNameCopyBtn = document.getElementById("authorNameCopyBtn");
+authorNameCopyBtn.addEventListener("click", () => {
+  let eAuthorName = document.getElementById("authorName");
+  let authorName = "";
+  if (eAuthorName != null) {
+    authorName = eAuthorName.value;
+  }
+  copyClipboad(authorName, authorNameCopyBtn);
+}, false);
+
 // 書籍の表紙リンクをコピーするイベント登録
 let bookImgLinkCopyBtn = document.getElementById("bookImgLinkCopyBtn");
 bookImgLinkCopyBtn.addEventListener("click", () => {
@@ -63,6 +74,15 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         eTitle.value = "取得できませんでした。";
       } else {
         eTitle.value = request.message.Title;
+      }
+    }
+    // 著者名の表示
+    let eAuthorName = document.getElementById("authorName");
+    if (eAuthorName != null) {
+      if (request.message.AuthorName == "") {
+        eAuthorName.value = "取得できませんでした。";
+      } else {
+        eAuthorName.value = request.message.AuthorName;
       }
     }
     // 表紙リンクの表示
