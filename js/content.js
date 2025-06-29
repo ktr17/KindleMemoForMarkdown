@@ -20,6 +20,19 @@ function getBookTitle() {
 }
 
 /**
+ * 著者名を取得する
+ */
+function getAuthorName() {
+  let authorName = "";
+  let authorQuery = "#annotation-scroller > div > div.a-row.a-spacing-base > div.a-column.a-span5 > p.a-spacing-none.a-spacing-top-micro.a-size-base.a-color-secondary.kp-notebook-selectable.kp-notebook-metadata"
+  let eAuthorName = getElement(authorQuery);
+  if (eAuthorName != null) {
+    authorName = eAuthorName.innerText;
+  }
+  return authorName
+}
+
+/**
  * 書籍のメモを取得する
  */
 function getBookMemo() {
@@ -55,7 +68,7 @@ function getBookMemo() {
 }
 
 /**
- * 書籍の表紙イメージのリンクを取得するf
+ * 書籍の表紙イメージのリンクを取得する
  */
 function getBookImgLink() {
   // 書籍の表紙イメージ
@@ -74,9 +87,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.name === "popup:content:initial") {
     try {
       let bookTitle = getBookTitle();
+      let bookAuthorName = getAuthorName();
       let bookMemo = getBookMemo();
       let bookImgLink = getBookImgLink();
-      let promise = chrome.runtime.sendMessage({ name: "content:popup:bookTitleAndMemo", message: {Title: bookTitle, Memo: bookMemo, BookImgLink: bookImgLink}});
+      let promise = chrome.runtime.sendMessage({ name: "content:popup:bookTitleAndMemo", message: {Title: bookTitle, AuthorName: bookAuthorName, Memo: bookMemo, BookImgLink: bookImgLink}});
       promise.then((response) => {
         // 成功
       })
